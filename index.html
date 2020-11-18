@@ -1,0 +1,232 @@
+<!-- 
+    Hai Namaku Lintar
+    Kamu boleh download source ini 
+    Tebarkan cinta dan kasihmu 
+    pilihlah yang terbaik buatmu 
+    berbahagialah bersamanya 
+ -->
+<html>
+<head>
+    <title>Dek Izaa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}    
+/* #box {
+    width: 50%;
+    background: red;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+} */
+
+#box{
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%);
+  /* background-color: rgb(124, 97, 97); */
+  font-family: 'Cutive Mono', monospace;
+  font-size: 27px;
+  text-align: center;
+}
+#Time{
+    text-align: center;
+    font-family: 'Gugi', cursive;
+    color:grey;
+    font-size: 23px;
+}
+
+#q{
+    font-size: 20px;
+}
+
+hr.hr--logo {
+  border-top: solid #000 1px;
+  margin: 50px 0;
+  color:red;
+}
+hr.hr--logo:after {
+  content: "❤";
+  /* Controls the position of the logo */
+  left: 50%;
+  position: absolute;
+  transform: translateY(-50%) translateX(-50%);
+  /* Controls the whitespace around the symbol */
+  padding: 20px;
+  background: #fff;
+}
+img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  opacity: .6;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Gugi&family=Vast+Shadow&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="box">
+        <h2 id='Selamat'></h2>
+        <p id="Time"></p>
+        <hr class="hr--logo">
+
+        <p id="q"></p>
+    </div>
+
+
+</body>
+<script src="moment.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script>
+
+    var pagi = [
+                {"quotes":'“Percayalah pada dirimu sendiri. Kamu tahu lebih banyak dari yang kamu duga.” – Benjamin Spock'},
+                {"quotes":'"Jangan biarkan opini orang lain menenggelamkan suara dari dalam diri Anda" - Steve Jobs'},
+                {"quotes":'"Bangun dan wujudkan mimpi Anda atau orang lain akan memperkerjakan Anda untuk membangun mimpi mereka" - Farrah Gray'},
+                {"quotes":'"Mulai setiap harimu dengan pikiran positif dan hati yang bersyukur" - Roy T. Bennett'},
+                {"quotes":'"Kesuksesan tidak menemukan Anda. Anda harus keluar dan meraihnya" - Anonymous'},
+                {"quotes":'"Jangan menyerah. Hal-hal besar membutuhkan waktu. Bersabarlah" - Anonim'},
+                {"quotes":'"Ingat, ini hanya hari yang buruk, bukan kehidupan yang buruk" - Anonim'},
+                {"quotes":'"Ketika kamu berhenti berubah, saat itu pula hidupmu berakhir." – Benjamin Franklin'},
+                {"quotes":'“Jika kamu memiliki kemampuan untuk mencintai, cintai dirimu terlebih dahulu.” – Charles Bukowski'},
+                {"quotes":'“Percayalah pada apa yang ada dalam dirimu.” – André Gide'},
+                {"quotes":'“Kecantikan dimulai saat kamu memutuskan untuk menjadi dirimu sendiri.” – Coco Chanel'},
+                {"quotes":'"Semoga harimu menyenangkan  "'},
+                {"quotes":"“Janganlah pernah menyerah ketika Anda masih mampu berusaha lagi. Tidak ada kata berakhir sampai Anda berhenti mencoba” - Brian Dyson"},
+                {"quotes":"“Satu-satunya batasan untuk meraih mimpi kita adalah keragu-raguan kita akan hari ini. Marilah kita maju dengan keyakinan yang aktif dan kuat” - Franklin Roosevelt"},
+                {"quotes": '"Lakukan sesuatu hari ini yang akan membuat diri Anda di masa depan berterima kasih." - Anonim'}   
+            ];
+    panjang = Math.floor(Math.random()*pagi.length);
+    console.log(panjang);
+    document.querySelector("#q").innerHTML = (panjang > 0)?pagi[panjang-1]['quotes']:pagi[0]['quotes'];
+    var time = moment().format('h:mm:ss a');
+    document.getElementById("Time").innerHTML = " - " + time +" - ";
+
+    var today = new Date()
+    var curHr = today.getHours()
+    // alert(curHr)
+    var pesan = "";
+    if (curHr < 10) {
+        pesan = "Selamat Pagi, Dek Izaa";
+    } else if (curHr < 15) {
+        pesan = "Selamat Siang, Dek Izaa ";
+    } else if (curHr < 18) {
+        pesan = "Selamat Sore, Dek Izaa ";
+    } else {
+        pesan = "Selamat Malam, Dek Izaa ";
+    }
+    
+    var i = 0;
+    var speed = 90;
+    typeWriter() 
+    function typeWriter() {
+        if (i < pesan.length) {
+            document.getElementById("Selamat").innerHTML += pesan.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+    
+    setInterval(() => {
+        
+        time = moment().format('h:mm:ss a');
+        document.getElementById("Time").innerHTML = " - " + time +" - ";
+    }, 1000);
+
+    function makeDiv(){
+        
+        rimg = Math.floor(Math.random()*7);
+        var divsize = ((Math.random()*100) + 50).toFixed();
+        $newdiv = $('<div/>').css({
+            'width':'10px',
+            'height':'10px',
+        });
+        
+        var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+        var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+        img = (rimg > 0)?rimg:1;
+        $newdiv.css({
+            'position':'absolute',
+            'left':posx+'px',
+            'top':posy+'px',
+            'display':'none'
+        }).html(`<img src='img/${img}.png' width='35'>`).appendTo( 'body' ).fadeIn(100).delay(300).fadeOut(200, function(){
+        $(this).remove();
+        
+            setTimeout(() => {
+                
+                makeDiv(); 
+            }, 1000);
+        }); 
+    }
+    makeDiv()
+
+    function makeDiv2(){
+        
+        rimg = Math.floor(Math.random()*7);
+        var divsize = ((Math.random()*100) + 50).toFixed();
+        $newdiv = $('<div/>').css({
+            'width':'10px',
+            'height':'10px',
+        });
+        
+        var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+        var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+        img = (rimg > 0)?rimg:1;
+        $newdiv.css({
+            'position':'absolute',
+            'left':posx+'px',
+            'top':posy+'px',
+            'display':'none'
+        }).html(`<img src='img/${img}.png' width='35'>`).appendTo( 'body' ).fadeIn(100).delay(300).fadeOut(200, function(){
+        $(this).remove();
+        
+            setTimeout(() => {
+                
+                makeDiv2(); 
+            }, 1000);
+        }); 
+    }
+    makeDiv2()
+
+    function makeDiv3(){
+        
+        rimg = Math.floor(Math.random()*7);
+        var divsize = ((Math.random()*100) + 50).toFixed();
+        $newdiv = $('<div/>').css({
+            'width':'10px',
+            'height':'10px',
+        });
+        
+        var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+        var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+        img = (rimg > 0)?rimg:1;
+        $newdiv.css({
+            'position':'absolute',
+            'left':posx+'px',
+            'top':posy+'px',
+            'display':'none'
+        }).html(`<img src='img/${img}.png' width='35'>`).appendTo( 'body' ).fadeIn(100).delay(300).fadeOut(200, function(){
+        $(this).remove();
+        
+            setTimeout(() => {
+                
+                makeDiv3(); 
+            }, 1000);
+        }); 
+    }
+    makeDiv3()
+
+
+
+
+</script>
+</html>
